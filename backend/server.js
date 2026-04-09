@@ -334,6 +334,17 @@ const ROOT = {
   ],
 };
 
+// At the top of your component, before the return
+const USE_MOCK_DATA = true;  // Set to false when backend is ready
+
+async function fetchClusterData(proxyUrl, clusterName = null, namespaceName = null) {
+  if (USE_MOCK_DATA) {
+    // Return your mock data here
+    return mockData;
+  }
+  // Original fetch code...
+}
+
 app.get('/api/cluster-drilldown', (req, res) => {
   res.json(ROOT);
 });
