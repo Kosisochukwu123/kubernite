@@ -348,7 +348,7 @@ const ROOT = {
 };
 
 app.get("/api/cluster-drilldown", (req, res) => {
-  res.json(data);
+  res.json(ROOT);
 });
 
 app.get("/health", (req, res) => {
