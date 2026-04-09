@@ -1,17 +1,19 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
 // Enable CORS for your frontend domain
-app.use(cors({
-  origin: [
-    'http://localhost:5173',           // Local development
-    'https://your-vercel-app.vercel.app',  // Replace with your Vercel URL
-    'https://your-custom-domain.com'      // Your custom domain if any
-  ],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173", // Local development
+      "https://your-vercel-app.vercel.app", // Replace with your Vercel URL
+      "https://your-custom-domain.com", // Your custom domain if any
+    ],
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 
@@ -26,10 +28,46 @@ const ROOT = {
     { label: "Cluster D", height: 37 },
   ],
   rows: [
-    { name: "Cluster A", cpu: "$2,463", ram: "$1,368", storage: "$246", net: "$307", gpu: "$821", eff: "10%", total: "$6,867" },
-    { name: "Cluster B", cpu: "$2,127", ram: "$1,181", storage: "$212", net: "$265", gpu: "$0", eff: "28%", total: "$5,574" },
-    { name: "Cluster C", cpu: "$1,733", ram: "$962", storage: "$173", net: "$216", gpu: "$577", eff: "15%", total: "$4,664" },
-    { name: "Cluster D", cpu: "$1,218", ram: "$677", storage: "$121", net: "$152", gpu: "$0", eff: "50%", total: "$2,545" },
+    {
+      name: "Cluster A",
+      cpu: "$2,463",
+      ram: "$1,368",
+      storage: "$246",
+      net: "$307",
+      gpu: "$821",
+      eff: "10%",
+      total: "$6,867",
+    },
+    {
+      name: "Cluster B",
+      cpu: "$2,127",
+      ram: "$1,181",
+      storage: "$212",
+      net: "$265",
+      gpu: "$0",
+      eff: "28%",
+      total: "$5,574",
+    },
+    {
+      name: "Cluster C",
+      cpu: "$1,733",
+      ram: "$962",
+      storage: "$173",
+      net: "$216",
+      gpu: "$577",
+      eff: "15%",
+      total: "$4,664",
+    },
+    {
+      name: "Cluster D",
+      cpu: "$1,218",
+      ram: "$677",
+      storage: "$121",
+      net: "$152",
+      gpu: "$0",
+      eff: "50%",
+      total: "$2,545",
+    },
   ],
   children: [
     // Cluster A's children (namespaces)
@@ -43,10 +81,46 @@ const ROOT = {
         { label: "Namespace D", height: 20 },
       ],
       rows: [
-        { name: "Namespace A", cpu: "$1,231", ram: "$684", storage: "$123", net: "$153", gpu: "$410", eff: "5%", total: "$3,433" },
-        { name: "Namespace B", cpu: "$739", ram: "$410", storage: "$73", net: "$92", gpu: "$246", eff: "20%", total: "$2,060" },
-        { name: "Namespace C", cpu: "$369", ram: "$205", storage: "$36", net: "$46", gpu: "$123", eff: "50%", total: "$1,030" },
-        { name: "Namespace D", cpu: "$123", ram: "$68", storage: "$12", net: "$15", gpu: "$41", eff: "40%", total: "$343" },
+        {
+          name: "Namespace A",
+          cpu: "$1,231",
+          ram: "$684",
+          storage: "$123",
+          net: "$153",
+          gpu: "$410",
+          eff: "5%",
+          total: "$3,433",
+        },
+        {
+          name: "Namespace B",
+          cpu: "$739",
+          ram: "$410",
+          storage: "$73",
+          net: "$92",
+          gpu: "$246",
+          eff: "20%",
+          total: "$2,060",
+        },
+        {
+          name: "Namespace C",
+          cpu: "$369",
+          ram: "$205",
+          storage: "$36",
+          net: "$46",
+          gpu: "$123",
+          eff: "50%",
+          total: "$1,030",
+        },
+        {
+          name: "Namespace D",
+          cpu: "$123",
+          ram: "$68",
+          storage: "$12",
+          net: "$15",
+          gpu: "$41",
+          eff: "40%",
+          total: "$343",
+        },
       ],
       children: [
         // Namespace A's pods
@@ -60,14 +134,52 @@ const ROOT = {
             { label: "Pod D", height: 11 },
           ],
           rows: [
-            { name: "Pod A", cpu: "$862", ram: "$479", storage: "$86", net: "$107", gpu: "$410", eff: "8%", total: "$2,403" },
-            { name: "Pod B", cpu: "$246", ram: "$136", storage: "$24", net: "$30", gpu: "$246", eff: "40%", total: "$686" },
-            { name: "Pod C", cpu: "$86", ram: "$47", storage: "$8", net: "$10", gpu: "$123", eff: "35%", total: "$240" },
-            { name: "Pod D", cpu: "$36", ram: "$20", storage: "$3", net: "$60", gpu: "$41", eff: "70%", total: "$103" },
+            {
+              name: "Pod A",
+              cpu: "$862",
+              ram: "$479",
+              storage: "$86",
+              net: "$107",
+              gpu: "$410",
+              eff: "8%",
+              total: "$2,403",
+            },
+            {
+              name: "Pod B",
+              cpu: "$246",
+              ram: "$136",
+              storage: "$24",
+              net: "$30",
+              gpu: "$246",
+              eff: "40%",
+              total: "$686",
+            },
+            {
+              name: "Pod C",
+              cpu: "$86",
+              ram: "$47",
+              storage: "$8",
+              net: "$10",
+              gpu: "$123",
+              eff: "35%",
+              total: "$240",
+            },
+            {
+              name: "Pod D",
+              cpu: "$36",
+              ram: "$20",
+              storage: "$3",
+              net: "$60",
+              gpu: "$41",
+              eff: "70%",
+              total: "$103",
+            },
           ],
-          children: []
+          children: [],
         },
-        null, null, null
+        null,
+        null,
+        null,
       ],
     },
     // Cluster B's children
@@ -81,12 +193,48 @@ const ROOT = {
         { label: "Namespace D", height: 15 },
       ],
       rows: [
-        { name: "Namespace A", cpu: "$1,050", ram: "$583", storage: "$105", net: "$131", gpu: "$0", eff: "12%", total: "$2,938" },
-        { name: "Namespace B", cpu: "$631", ram: "$350", storage: "$63", net: "$79", gpu: "$0", eff: "35%", total: "$1,759" },
-        { name: "Namespace C", cpu: "$315", ram: "$175", storage: "$31", net: "$39", gpu: "$0", eff: "52%", total: "$878" },
-        { name: "Namespace D", cpu: "$50", ram: "$28", storage: "$5", net: "$6", gpu: "$0", eff: "75%", total: "$105" },
+        {
+          name: "Namespace A",
+          cpu: "$1,050",
+          ram: "$583",
+          storage: "$105",
+          net: "$131",
+          gpu: "$0",
+          eff: "12%",
+          total: "$2,938",
+        },
+        {
+          name: "Namespace B",
+          cpu: "$631",
+          ram: "$350",
+          storage: "$63",
+          net: "$79",
+          gpu: "$0",
+          eff: "35%",
+          total: "$1,759",
+        },
+        {
+          name: "Namespace C",
+          cpu: "$315",
+          ram: "$175",
+          storage: "$31",
+          net: "$39",
+          gpu: "$0",
+          eff: "52%",
+          total: "$878",
+        },
+        {
+          name: "Namespace D",
+          cpu: "$50",
+          ram: "$28",
+          storage: "$5",
+          net: "$6",
+          gpu: "$0",
+          eff: "75%",
+          total: "$105",
+        },
       ],
-      children: []
+      children: [],
     },
     // Cluster C's children
     {
@@ -99,12 +247,48 @@ const ROOT = {
         { label: "Namespace D", height: 10 },
       ],
       rows: [
-        { name: "Namespace A", cpu: "$866", ram: "$481", storage: "$86", net: "$108", gpu: "$288", eff: "8%", total: "$2,332" },
-        { name: "Namespace B", cpu: "$519", ram: "$288", storage: "$52", net: "$65", gpu: "$173", eff: "22%", total: "$1,399" },
-        { name: "Namespace C", cpu: "$260", ram: "$144", storage: "$26", net: "$32", gpu: "$86", eff: "45%", total: "$700" },
-        { name: "Namespace D", cpu: "$86", ram: "$48", storage: "$9", net: "$11", gpu: "$29", eff: "55%", total: "$233" },
+        {
+          name: "Namespace A",
+          cpu: "$866",
+          ram: "$481",
+          storage: "$86",
+          net: "$108",
+          gpu: "$288",
+          eff: "8%",
+          total: "$2,332",
+        },
+        {
+          name: "Namespace B",
+          cpu: "$519",
+          ram: "$288",
+          storage: "$52",
+          net: "$65",
+          gpu: "$173",
+          eff: "22%",
+          total: "$1,399",
+        },
+        {
+          name: "Namespace C",
+          cpu: "$260",
+          ram: "$144",
+          storage: "$26",
+          net: "$32",
+          gpu: "$86",
+          eff: "45%",
+          total: "$700",
+        },
+        {
+          name: "Namespace D",
+          cpu: "$86",
+          ram: "$48",
+          storage: "$9",
+          net: "$11",
+          gpu: "$29",
+          eff: "55%",
+          total: "$233",
+        },
       ],
-      children: []
+      children: [],
     },
     // Cluster D's children
     {
@@ -117,66 +301,61 @@ const ROOT = {
         { label: "Namespace D", height: 8 },
       ],
       rows: [
-        { name: "Namespace A", cpu: "$609", ram: "$338", storage: "$60", net: "$76", gpu: "$0", eff: "25%", total: "$1,272" },
-        { name: "Namespace B", cpu: "$304", ram: "$169", storage: "$30", net: "$38", gpu: "$0", eff: "55%", total: "$636" },
-        { name: "Namespace C", cpu: "$152", ram: "$84", storage: "$15", net: "$19", gpu: "$0", eff: "65%", total: "$318" },
-        { name: "Namespace D", cpu: "$50", ram: "$28", storage: "$5", net: "$6", gpu: "$0", eff: "75%", total: "$105" },
+        {
+          name: "Namespace A",
+          cpu: "$609",
+          ram: "$338",
+          storage: "$60",
+          net: "$76",
+          gpu: "$0",
+          eff: "25%",
+          total: "$1,272",
+        },
+        {
+          name: "Namespace B",
+          cpu: "$304",
+          ram: "$169",
+          storage: "$30",
+          net: "$38",
+          gpu: "$0",
+          eff: "55%",
+          total: "$636",
+        },
+        {
+          name: "Namespace C",
+          cpu: "$152",
+          ram: "$84",
+          storage: "$15",
+          net: "$19",
+          gpu: "$0",
+          eff: "65%",
+          total: "$318",
+        },
+        {
+          name: "Namespace D",
+          cpu: "$50",
+          ram: "$28",
+          storage: "$5",
+          net: "$6",
+          gpu: "$0",
+          eff: "75%",
+          total: "$105",
+        },
       ],
-      children: []
+      children: [],
     },
   ],
 };
 
-// Health check endpoint (good for monitoring)
-app.get('/health', (req, res) => {
-  res.json({ status: 'healthy', timestamp: new Date().toISOString() });
+app.get("/api/cluster-drilldown", (req, res) => {
+  res.json(data);
 });
 
-// Your main API endpoint
-app.get('/api/cluster-drilldown', (req, res) => {
-  const { cluster, namespace } = req.query;
-  
-  // If no filters, return root data
-  if (!cluster) {
-    return res.json(ROOT);
-  }
-  
-  // Find the cluster
-  const clusterIndex = ROOT.rows.findIndex(r => r.name === cluster);
-  if (clusterIndex === -1) {
-    return res.status(404).json({ error: 'Cluster not found' });
-  }
-  
-  const clusterData = ROOT.children[clusterIndex];
-  if (!clusterData) {
-    return res.status(404).json({ error: 'Cluster data not found' });
-  }
-  
-  // If no namespace filter, return cluster's namespaces
-  if (!namespace) {
-    return res.json(clusterData);
-  }
-  
-  // Find the namespace
-  const namespaceIndex = clusterData.rows.findIndex(r => r.name === namespace);
-  if (namespaceIndex === -1) {
-    return res.status(404).json({ error: 'Namespace not found' });
-  }
-  
-  const namespaceData = clusterData.children[namespaceIndex];
-  if (!namespaceData) {
-    return res.status(404).json({ error: 'Namespace data not found' });
-  }
-  
-  return res.json(namespaceData);
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
 });
 
-// Get port from environment (Render sets this automatically)
 const PORT = process.env.PORT || 5000;
-
-// Start server
 app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
-  console.log(`📍 Health check: http://localhost:${PORT}/health`);
-  console.log(`📍 API endpoint: http://localhost:${PORT}/api/cluster-drilldown`);
+  console.log(`Server running on port ${PORT}`);
 });
