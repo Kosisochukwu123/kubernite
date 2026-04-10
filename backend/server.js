@@ -4,8 +4,9 @@ const cors = require("cors");
 const app = express();
 
 const allowedOrigins = [
-  "http://localhost:5173",                                      // Local development
-  "https://kubernite.vercel.app",                               // Your main domain
+  "http://localhost:5173",       
+    "http://localhost:5174",                                
+  "https://kubernite.vercel.app",                              
   "https://kubernite-git-main-kosisochukwu123s-projects.vercel.app",
   "https://kubernite-dff8pj8od-kosisochukwu123s-projects.vercel.app",
 ];
