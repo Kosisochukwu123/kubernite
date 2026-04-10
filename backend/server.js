@@ -3,34 +3,30 @@ const cors = require("cors");
 
 const app = express();
 
-// Enable CORS for your frontend domain
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173", // Local development
-      "https://kubernite.vercel.app",
-      "https://kubernite-git-main-kosisochukwu123s-projects.vercel.app",
-      "https://kubernite-dff8pj8od-kosisochukwu123s-projects.vercel.app",
-    ],
-    credentials: true,
-  }),
-);
+const allowedOrigins = [
+  "http://localhost:5173",                                      // Local development
+  "https://kubernite.vercel.app",                               // Your main domain
+  "https://kubernite-git-main-kosisochukwu123s-projects.vercel.app",
+  "https://kubernite-dff8pj8od-kosisochukwu123s-projects.vercel.app",
+];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg = "The CORS policy for this site does not allow access from the specified Origin.";
+        return callback(new Error(msg), false);
       }
+      return callback(null, true);
     },
-    credentials: true, // REQUIRED if you use cookies/auth
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  }),
+  })
 );
-
 
 app.use(express.json());
 
@@ -375,4 +371,13 @@ app.get("/health", (req, res) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+});
+
+
+app.use((err, req, res, next) => {
+  console.error('Global error:', err.stack);
+  res.status(500).json({ 
+    error: 'Something broke!',
+    message: err.message 
+  });
 });
