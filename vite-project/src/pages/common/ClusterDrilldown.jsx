@@ -321,7 +321,7 @@ export default function ClusterDrilldown() {
       <section className="cd-section">
         <div className="cd-setup-wrap">
           <div className="cd-setup-card">
-            <div className="cd-setup-icon">🔌</div>
+      
             <h3 className="cd-setup-title">Connect to Kubecost</h3>
             <p className="cd-setup-desc">
               Enter the URL of your backend server (default:
@@ -347,9 +347,7 @@ export default function ClusterDrilldown() {
                 Connect →
               </button>
             </div>
-            <p className="cd-setup-hint">
-              Make sure your backend is running: <code>node server.js</code>
-            </p>
+          
           </div>
         </div>
       </section>
@@ -367,7 +365,7 @@ export default function ClusterDrilldown() {
 
       <div className="cd-card-wrap">
         <div className="cd-card">
-          
+
           {/* Top bar */}
           <div className="cd-topbar">
             <div className="cd-topbar-left">
