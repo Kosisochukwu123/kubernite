@@ -1,3 +1,5 @@
+NOTE: OPEN THE APPLICATION AND SCROLL DOWN TO THE SECTION> I DID THE ASSIGNMENT ON 0:30 - 0:40 in the VIDEO
+
 # 🎯 Cluster Drilldown Component
 
 A beautiful, interactive cost visualization tool that lets you drill down from clusters → namespaces → pods to understand your Kubernetes spending.
