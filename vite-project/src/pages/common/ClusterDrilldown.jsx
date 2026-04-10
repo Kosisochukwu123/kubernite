@@ -80,7 +80,6 @@ async function fetchClusterData(
   }
 }
 
-// Bar Component
 function Bar({ bar, index, clickable, onClick }) {
   const [grown, setGrown] = useState(false);
   const rafRef = useRef(null);
@@ -111,7 +110,6 @@ function Bar({ bar, index, clickable, onClick }) {
   );
 }
 
-// Table Row Component
 function TableRow({ row, index }) {
   const [visible, setVisible] = useState(false);
   const timerRef = useRef(null);
@@ -144,7 +142,6 @@ function TableRow({ row, index }) {
   );
 }
 
-// Breadcrumb Component
 function BreadcrumbPill({ text, aggregatedBy }) {
   const [show, setShow] = useState(false);
   const timerRef = useRef(null);
@@ -183,7 +180,6 @@ function BreadcrumbPill({ text, aggregatedBy }) {
   );
 }
 
-// Skeleton Components
 function SkeletonRows({ count = 4 }) {
   return (
     <>
@@ -225,7 +221,6 @@ function SkeletonBars({ count = 4 }) {
 
 // Main Component
 export default function ClusterDrilldown() {
-  // Connection config
   const [proxyUrl, setProxyUrl] = useState(
     import.meta.env.VITE_API_URL || "http://localhost:5000",
   );
@@ -234,7 +229,6 @@ export default function ClusterDrilldown() {
     import.meta.env.VITE_API_URL || "http://localhost:5000",
   );
 
-  // Nav stack
   const [navStack, setNavStack] = useState([
     {
       depth: 0,
@@ -245,7 +239,7 @@ export default function ClusterDrilldown() {
     },
   ]);
 
-  // Data state
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -255,7 +249,7 @@ export default function ClusterDrilldown() {
   const depth = current.depth;
   const isLeaf = depth >= 2;
 
-  // Load data
+  
   const load = useCallback(async () => {
     if (!configured) return;
 
@@ -282,7 +276,7 @@ export default function ClusterDrilldown() {
     load();
   }, [load]);
 
-  // Navigation
+ 
   const drillInto = (rowIndex) => {
     if (isLeaf || !data?.children?.[rowIndex]) return;
 
@@ -321,7 +315,7 @@ export default function ClusterDrilldown() {
   const bars = data?.bars || (data?.rows ? rowsToBars(data.rows) : []);
   const rows = data?.rows || [];
 
-  // Setup Screen
+
   if (!configured) {
     return (
       <section className="cd-section">
@@ -373,6 +367,7 @@ export default function ClusterDrilldown() {
 
       <div className="cd-card-wrap">
         <div className="cd-card">
+          
           {/* Top bar */}
           <div className="cd-topbar">
             <div className="cd-topbar-left">
