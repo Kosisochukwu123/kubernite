@@ -8,12 +8,29 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173", // Local development
-      "https://your-vercel-app.vercel.app", // Replace with your Vercel URL
-      "https://your-custom-domain.com", // Your custom domain if any
+      "https://kubernite.vercel.app",
+      "https://kubernite-git-main-kosisochukwu123s-projects.vercel.app",
+      "https://kubernite-dff8pj8od-kosisochukwu123s-projects.vercel.app",
     ],
     credentials: true,
   }),
 );
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // REQUIRED if you use cookies/auth
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
+
 
 app.use(express.json());
 
